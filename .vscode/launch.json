@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Historicopedido",
+            "request": "launch",
+            "mainClass": "Historicopedido",
+            "projectName": "ADS_Lanche_e2f4afcd"
+        },
+        {
+            "type": "java",
+            "name": "Novopedido",
+            "request": "launch",
+            "mainClass": "Novopedido",
+            "projectName": "ADS_Lanche_e2f4afcd"
+        },
+        {
+            "type": "java",
+            "name": "Tela1",
+            "request": "launch",
+            "mainClass": "Tela1",
+            "projectName": "ADS_Lanche_e2f4afcd"
+        },
+        {
+            "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "Teste",
+            "projectName": "ADS_Lanche_e2f4afcd"
+        },
+        {
+            "type": "java",
+            "name": "telacadas",
+            "request": "launch",
+            "mainClass": "telacadas",
+            "projectName": "ADS_Lanche_e2f4afcd"
+        }
+    ]
+}
