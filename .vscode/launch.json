@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "telacadas",
+            "request": "launch",
+            "mainClass": "telacadas",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela1",
+            "request": "launch",
+            "mainClass": "Tela1",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"
