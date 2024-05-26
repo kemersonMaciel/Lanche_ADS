@@ -1,6 +1,9 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -19,7 +22,7 @@ public class Tela_Cadasprod extends JFrame implements ActionListener {
     JLabel lbtitle = new JLabel("Cadastre os seus produtos!");
     JLabel lbdesc = new JLabel("Produto:");
     JLabel lbvalor = new JLabel("Valor:");
-    JCheckBox cbox1 = new JCheckBox("Disponível");
+    JCheckBox cbox1 = new JCheckBox("Ativo");
 
     JTextField txtdesc = new JTextField();
     JTextField txtvalor = new JTextField();
@@ -33,14 +36,16 @@ public class Tela_Cadasprod extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         painel.setLayout(null);
-        
-        lbtitle.setBounds(70,20,200,30);
-        lbdesc.setBounds(30,60,80,30);
+
+        lbtitle.setBounds(50,15,300,30);
+        lbdesc.setBounds(15,60,80,30);
         txtdesc.setBounds(100,60,150,30);
-        lbvalor.setBounds(30, 120, 80, 30);
+        lbvalor.setBounds(15, 120, 80, 30);
         txtvalor.setBounds(100, 120, 150, 30);
         cbox1.setBounds(100,150,150,30);
-
+        
+        btcadastrar.setBackground(Color.BLACK);
+        btcadastrar.setForeground(Color.WHITE);
         btcadastrar.setBounds(100, 210, 100, 30);
         btcadastrar.addActionListener(this);
 
@@ -51,6 +56,14 @@ public class Tela_Cadasprod extends JFrame implements ActionListener {
         painel.add(txtvalor);
         painel.add(cbox1);
         painel.add(btcadastrar);
+        
+        lbtitle.setFont(new Font("Serif", Font.BOLD, 16));
+        lbdesc.setFont(new Font("Sans", Font.BOLD,15));
+        lbvalor.setFont(new Font("Sans", Font.BOLD, 15));
+        cbox1.setFont(new Font("Sans", Font.BOLD, 15));
+        btcadastrar.setFont(new Font("Dialog", Font.CENTER_BASELINE,14));
+        txtdesc.setFont(new Font("Monospaced",Font.PLAIN,15));
+        txtvalor.setFont(new Font("Monospaced",Font.PLAIN,15));
 
         getContentPane().add(painel);
     }

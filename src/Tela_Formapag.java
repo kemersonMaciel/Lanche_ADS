@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -36,13 +38,16 @@ public class Tela_Formapag extends JFrame implements ActionListener{
 
         painel.setLayout(null);
 
-        lbtitle.setBounds(55, 25,200,30);
+        lbtitle.setBounds(45, 15,200,30);
 
-        rbpag1.setBounds(30, 60, 80,30);
-        rbpag2.setBounds(30, 85, 80,30);
-        rbpag3.setBounds(30, 110, 150,30);
-        rbpag4.setBounds(30, 135, 150,30);
-        btfinalizar.setBounds(70,190,150,30);
+        rbpag1.setBounds(30, 60, 150,30);
+        rbpag2.setBounds(30, 90, 80,30);
+        rbpag3.setBounds(30, 120, 200,30);
+        rbpag4.setBounds(30, 150, 200,30);
+
+        btfinalizar.setBackground(Color.BLACK);
+        btfinalizar.setForeground(Color.WHITE);
+        btfinalizar.setBounds(70,210,150,30);
         btfinalizar.addActionListener(this);
 
         grupo.add(rbpag1);
@@ -57,8 +62,14 @@ public class Tela_Formapag extends JFrame implements ActionListener{
         painel.add(rbpag4);
         painel.add(btfinalizar);
 
-        getContentPane().add(painel);
+        lbtitle.setFont(new Font("Serif",Font.BOLD, 16));
+        rbpag1.setFont(new Font("Monospaced", Font.BOLD,14));
+        rbpag2.setFont(new Font("Monospaced", Font.BOLD,14));
+        rbpag3.setFont(new Font("Monospaced", Font.BOLD,14));
+        rbpag4.setFont(new Font("Monospaced", Font.BOLD,14));
+        btfinalizar.setFont(new Font("Dialog",Font.CENTER_BASELINE, 15));
 
+        getContentPane().add(painel);
     }
 
     public static void main(String[] args) {
@@ -69,7 +80,6 @@ public class Tela_Formapag extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btfinalizar) {
-
             String pagamento = "";
             if (rbpag1.isSelected()) {
                 pagamento = "Dinheiro";

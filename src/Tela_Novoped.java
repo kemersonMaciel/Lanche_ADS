@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class Tela_Novoped extends JFrame implements ActionListener {
     JLabel lbquantidade = new JLabel("Quantidade");
     JSpinner spquantidade = new JSpinner();
 
-    JLabel lbselped = new JLabel("Dados do Pedido:");
+    JLabel lbdados = new JLabel("Dados do Pedido:");
     JLabel lbpedido1 = new JLabel("............");
     JLabel lbpedido2 = new JLabel("............");
     JLabel lbpedido3 = new JLabel("............");
@@ -43,24 +45,30 @@ public class Tela_Novoped extends JFrame implements ActionListener {
 
         painel.setLayout(null);
 
-        lbtitulo.setBounds(150, 15, 150, 30);
+        lbtitulo.setBounds(130, 15, 150, 30);
         lbcliente.setBounds(30,50,80,30);
         cbcliente.setBounds(30, 80, 150, 30);
-        lbselecpedido.setBounds(30,140,150,30);
+        lbselecpedido.setBounds(30,140,200,30);
         cbopcao.setBounds(30,170,150,30);
-        lbquantidade.setBounds(30,210,80,30);
-        lbselped.setBounds(30,300,100,30);
-        lbpedido1.setBounds(30, 320, 150, 30);
-        lbpedido2.setBounds(30, 340, 150, 30);
-        lbpedido3.setBounds(30, 360, 150, 30);
+        lbquantidade.setBounds(30,210,100,30);
+        lbdados.setBounds(30,300,150,30);
+        lbpedido1.setBounds(30, 320, 200, 30);
+        lbpedido2.setBounds(30, 340, 200, 30);
+        lbpedido3.setBounds(30, 360, 200, 30);
 
+        btcadasclien.setBackground(Color.BLACK);
+        btcadasclien.setForeground(Color.WHITE);
         btcadasclien.setBounds(215,80,150,30);
         btcadasclien.addActionListener(this);
 
-        btcontinue.setBounds(155, 400, 90, 30);
+        btcontinue.setBackground(Color.BLACK);
+        btcontinue.setForeground(Color.WHITE);
+        btcontinue.setBounds(140, 400, 120, 30);
         btcontinue.addActionListener(this);
-
-        btadd.setBounds(215, 170, 90, 30);
+        
+        btadd.setBackground(Color.BLACK);
+        btadd.setForeground(Color.WHITE);
+        btadd.setBounds(215, 170, 150, 30);
         btadd.addActionListener(this);
 
         spquantidade.setBounds(30,240,100,30);
@@ -71,7 +79,7 @@ public class Tela_Novoped extends JFrame implements ActionListener {
         painel.add(lbselecpedido);
         painel.add(lbquantidade);
         painel.add(cbopcao);
-        painel.add(lbselped);
+        painel.add(lbdados);
         painel.add(lbpedido1);
         painel.add(lbpedido2);
         painel.add(lbpedido3);
@@ -79,6 +87,21 @@ public class Tela_Novoped extends JFrame implements ActionListener {
         painel.add(btadd);
         painel.add(btcadasclien);
         painel.add(spquantidade);
+
+        lbtitulo.setFont(new Font("Serif", Font.BOLD, 18));
+        lbcliente.setFont(new Font("Sans",Font.BOLD,15));
+        lbselecpedido.setFont(new Font("Sans",Font.BOLD,15));
+        lbquantidade.setFont(new Font("Sans",Font.BOLD,15));
+        lbdados.setFont(new Font("Sans",Font.BOLD,15));
+        lbpedido1.setFont(new Font("Monospaced",Font.BOLD,15));
+        lbpedido2.setFont(new Font("Monospaced",Font.BOLD,15));
+        lbpedido3.setFont(new Font("Monospaced",Font.BOLD,15));
+        cbopcao.setFont(new Font("Monospaced",Font.BOLD,12));
+        cbcliente.setFont(new Font("Monospaced",Font.BOLD,12));
+        spquantidade.setFont(new Font("Monospaced",Font.BOLD,18));
+        btcadasclien.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
+        btadd.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
+        btcontinue.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
 
         getContentPane().add(painel);
 
@@ -103,7 +126,7 @@ public class Tela_Novoped extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         lbpedido1.setText(cbopcao.getSelectedItem().toString());
         if (e.getSource() == btcadasclien){
-            Tela_Cadascliente cliente = new Tela_Cadascliente();
+            Tela_Cliente cliente = new Tela_Cliente();
             cliente.setVisible(true);
         }else if (e.getSource() == btcontinue){
             Tela_Formapag formapag = new Tela_Formapag();

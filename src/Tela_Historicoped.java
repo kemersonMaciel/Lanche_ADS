@@ -11,18 +11,16 @@ import javax.swing.JComboBox;
 
 public class Tela_Historicoped extends JFrame implements ActionListener{
 
-   JPanel painel = new JPanel();
+    JPanel painel = new JPanel();
 
-   JLabel lbtitulo = new JLabel("Últimos Pedidos");
-   JLabel lbcliente = new JLabel("Cliente");
-   JLabel lbdia = new JLabel("Dia");
-   JComboBox<String> cbopcao = new JComboBox<>();
-   JTextField txtcliente = new JTextField();
-   JTextField txtdia = new JTextField();
-    
+    JLabel lbtitulo = new JLabel("Últimos Pedidos");
+    JLabel lbcliente = new JLabel("Cliente");
+    JLabel lbdia = new JLabel("Dia");
+    JComboBox<String> cbopcao = new JComboBox<>();
+    JTextField txtcliente = new JTextField();
 
 
-   Tela_Historicoped(){
+    Tela_Historicoped(){
         setTitle("Histórico de Pedido");
         setSize(340,450);
         setLocation(600, 150);
@@ -34,7 +32,6 @@ public class Tela_Historicoped extends JFrame implements ActionListener{
         lbcliente.setBounds(30, 50, 80, 30);
         txtcliente.setBounds(30, 80, 150, 30);
         lbdia.setBounds(30, 120, 280, 30);
-        txtdia.setBounds(100, 140, 150, 30);
         cbopcao.setBounds(30,150,150,30);
 
         painel.add(lbtitulo);
@@ -52,18 +49,16 @@ public class Tela_Historicoped extends JFrame implements ActionListener{
         cbopcao.addItem("sexta-feira");
         cbopcao.addItem("sábado");
         cbopcao.addItem("domingo");
-        
-
     }
 
     public static void main(String[] args) {
-        Tela_Historicoped historicopedido = new Tela_Historicoped();
-        historicopedido.setVisible(true);
+        Tela_Historicoped historicoped = new Tela_Historicoped();
+        historicoped.setVisible(true);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
+        
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     }
     

@@ -6,6 +6,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Tela_Cliente",
+            "request": "launch",
+            "mainClass": "Tela_Cliente",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela_Formapag",
+            "request": "launch",
+            "mainClass": "Tela_Formapag",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela_Historicoped",
+            "request": "launch",
+            "mainClass": "Tela_Historicoped",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela_Novoped",
+            "request": "launch",
+            "mainClass": "Tela_Novoped",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela_Cadasprod",
+            "request": "launch",
+            "mainClass": "Tela_Cadasprod",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Tela_Home",
+            "request": "launch",
+            "mainClass": "Tela_Home",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
             "name": "Cliente",
             "request": "launch",
             "mainClass": "Cliente",
