@@ -6,7 +6,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Tela1 implements ActionListener {
+public class Tela_Home implements ActionListener {
     
     Produto pro;
 
@@ -44,17 +44,17 @@ public class Tela1 implements ActionListener {
 
 
         public static void main(String[] args) {
-        Tela1 tela1 = new Tela1();
+        Tela_Home tela1 = new Tela_Home();
         tela1.criarTela();
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == cadastrarProduto){
-                telacadas telacadas = new telacadas();
+                Tela_Cadasprod telacadas = new Tela_Cadasprod();
                 telacadas.setVisible(true);
             } else if (e.getSource() == novoPedidoItem){
-                Novopedido novopedido = new Novopedido();
+                Tela_Novoped novopedido = new Tela_Novoped();
                 novopedido.setVisible(true);
             }
         }    

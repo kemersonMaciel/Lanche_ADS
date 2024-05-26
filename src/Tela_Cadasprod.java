@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class telacadas extends JFrame implements ActionListener {
+public class Tela_Cadasprod extends JFrame implements ActionListener {
 
     Produto pro;
     ArrayList<Produto> list = new ArrayList<>();
@@ -26,11 +26,11 @@ public class telacadas extends JFrame implements ActionListener {
 
     JButton btcadastrar = new JButton("Cadastar");
 
-    telacadas(){
+    Tela_Cadasprod(){
         setTitle("Cadastrar Produto");
         setSize(310,320);
         setLocation(600, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         painel.setLayout(null);
         
@@ -54,9 +54,8 @@ public class telacadas extends JFrame implements ActionListener {
 
         getContentPane().add(painel);
     }
-
     public static void main(String[] args) {
-        telacadas telacadas = new telacadas();
+        Tela_Cadasprod telacadas = new Tela_Cadasprod();
         telacadas.setVisible(true);
     }
 

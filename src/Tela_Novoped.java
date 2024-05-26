@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
 
-public class Novopedido extends JFrame implements ActionListener {
+public class Tela_Novoped extends JFrame implements ActionListener {
 
     ArrayList<String> pedidos = new ArrayList<>();
 
@@ -26,7 +26,6 @@ public class Novopedido extends JFrame implements ActionListener {
     JLabel lbquantidade = new JLabel("Quantidade");
     JSpinner spquantidade = new JSpinner();
 
-
     JLabel lbselped = new JLabel("Dados do Pedido:");
     JLabel lbpedido1 = new JLabel("............");
     JLabel lbpedido2 = new JLabel("............");
@@ -36,8 +35,7 @@ public class Novopedido extends JFrame implements ActionListener {
     JButton btadd = new JButton("Adicionar");
     JButton btcadasclien = new JButton("Cadastrar Cliente");
 
-
-    Novopedido(){
+    Tela_Novoped(){
         setTitle("Novo Pedido");
         setSize(400,490);
         setLocation(600, 150);
@@ -96,7 +94,7 @@ public class Novopedido extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        Novopedido novopedido = new Novopedido();
+        Tela_Novoped novopedido = new Tela_Novoped();
         novopedido.setVisible(true);
     }
 
@@ -105,10 +103,10 @@ public class Novopedido extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         lbpedido1.setText(cbopcao.getSelectedItem().toString());
         if (e.getSource() == btcadasclien){
-            Cliente cliente = new Cliente();
+            Tela_Cadascliente cliente = new Tela_Cadascliente();
             cliente.setVisible(true);
         }else if (e.getSource() == btcontinue){
-            Formapag formapag = new Formapag();
+            Tela_Formapag formapag = new Tela_Formapag();
             formapag.setVisible(true);
         }
     }

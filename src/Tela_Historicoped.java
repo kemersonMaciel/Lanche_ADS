@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
 
 
 
-public class Historicopedido extends JFrame implements ActionListener{
+public class Tela_Historicoped extends JFrame implements ActionListener{
 
    JPanel painel = new JPanel();
 
@@ -22,7 +22,7 @@ public class Historicopedido extends JFrame implements ActionListener{
     
 
 
-   Historicopedido(){
+   Tela_Historicoped(){
         setTitle("Histórico de Pedido");
         setSize(340,450);
         setLocation(600, 150);
@@ -36,7 +36,7 @@ public class Historicopedido extends JFrame implements ActionListener{
         lbdia.setBounds(30, 120, 280, 30);
         txtdia.setBounds(100, 140, 150, 30);
         cbopcao.setBounds(30,150,150,30);
-       
+
         painel.add(lbtitulo);
         painel.add(lbcliente);
         painel.add(txtcliente);
@@ -57,7 +57,7 @@ public class Historicopedido extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        Historicopedido historicopedido = new Historicopedido();
+        Tela_Historicoped historicopedido = new Tela_Historicoped();
         historicopedido.setVisible(true);
     }
     

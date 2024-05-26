@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
-public class Formapag extends JFrame implements ActionListener{
+public class Tela_Formapag extends JFrame implements ActionListener{
 
     ArrayList<String> Formapag = new ArrayList<>();
 
@@ -28,7 +28,7 @@ public class Formapag extends JFrame implements ActionListener{
 
     JButton btfinalizar = new JButton("Finalizar Pedido");
 
-    Formapag(){
+    Tela_Formapag(){
         setTitle("Forma de Pagamento:");
         setSize(300,300);
         setLocation(600,150);
@@ -62,7 +62,7 @@ public class Formapag extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        Formapag formapag = new Formapag();
+        Tela_Formapag formapag = new Tela_Formapag();
         formapag.setVisible(true);
     }
 
