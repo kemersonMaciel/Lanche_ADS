@@ -54,7 +54,7 @@ public class Historicopedido extends JFrame implements ActionListener{
         cbopcao.addItem("domingo");
         
 
-   }
+    }
 
     public static void main(String[] args) {
         Historicopedido historicopedido = new Historicopedido();

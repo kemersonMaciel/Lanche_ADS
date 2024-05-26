@@ -10,7 +10,7 @@ public class Tela1 implements ActionListener {
     
     Produto pro;
 
-    JFrame tela = new JFrame("ADS Lanches");
+    JFrame tela = new JFrame("Lanche ADS");
 
     JMenuBar mb = new JMenuBar();
     JMenu cadastrarMenu = new JMenu("Cadastro");

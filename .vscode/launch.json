@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Formapag",
+            "request": "launch",
+            "mainClass": "Formapag",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
+            "name": "Novopedido",
+            "request": "launch",
+            "mainClass": "Novopedido",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
             "name": "telacadas",
             "request": "launch",
             "mainClass": "telacadas",

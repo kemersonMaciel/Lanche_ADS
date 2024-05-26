@@ -2,15 +2,15 @@ public class Produto {
 
     private String descricao;
     private Double valor;
-    private Integer quantidade;
+    private Boolean disponivel;
 
     Produto(){}
 
-    public Produto (String descricao, Double valor, Integer quantidade){
+    public Produto (String descricao, Double valor, Boolean disponivel){
         super();
         this.descricao = descricao;
         this.valor = valor;
-        this.quantidade = quantidade;
+        this.disponivel = disponivel;
     }
 
     public String getDescricao(){
@@ -19,7 +19,7 @@ public class Produto {
     public Double getValor(){
         return valor;
     }  
-    public Integer getQuantidade(){
-        return quantidade;
+    public boolean isDisponivel(){
+        return disponivel;
     }
 }
