@@ -1,25 +1,28 @@
 public class Produto {
 
-    private String descricao;
+    private String nome;
     private Double valor;
-    private Boolean disponivel;
+    private Boolean ativo;
 
-    Produto(){}
 
-    public Produto (String descricao, Double valor, Boolean disponivel){
+    public Produto (String nome, Double valor, Boolean ativo){
         super();
-        this.descricao = descricao;
+        this.nome = nome;
         this.valor = valor;
-        this.disponivel = disponivel;
+        this.ativo = ativo;
     }
 
-    public String getDescricao(){
-        return descricao;
+    public String getNome(){
+        return nome;
     }
     public Double getValor(){
         return valor;
     }  
-    public boolean isDisponivel(){
-        return disponivel;
+    public boolean isAtivo(){
+        return ativo;
+    }
+    @Override
+    public String toString(){
+        return nome + " - R$ " + valor;
     }
 }

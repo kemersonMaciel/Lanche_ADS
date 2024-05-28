@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Tela_Cliente extends JFrame implements ActionListener {
+public class Tela_CadastroCliente extends JFrame implements ActionListener {
 
     ArrayList<String> clientes = new ArrayList<>();
 
@@ -32,7 +32,7 @@ public class Tela_Cliente extends JFrame implements ActionListener {
 
     JButton btcadastrar = new JButton("Cadastrar");
 
-    Tela_Cliente(){
+    Tela_CadastroCliente(){
         setTitle("Cadastrar Cliente");
         setSize(310,400);
         setLocation(600, 200);
@@ -82,7 +82,7 @@ public class Tela_Cliente extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        Tela_Cliente cliente = new Tela_Cliente();
+        Tela_CadastroCliente cliente = new Tela_CadastroCliente();
         cliente.setVisible(true);
     }
 
