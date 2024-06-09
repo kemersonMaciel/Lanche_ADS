@@ -15,7 +15,7 @@ public class Tela_CadastroProduto extends JFrame {
         // ConfiguraÃ§Ã£o da janela de cadastro de produto
         setTitle("Cadastro de Produto");
         setSize(300, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         // Painel principal com layout de grid

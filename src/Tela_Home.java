@@ -16,7 +16,7 @@ public class Tela_Home extends JFrame {
         //Janela principal
         setTitle("Lanche ADS");
         setSize(500, 550);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
         JPanel painel = new JPanel();
