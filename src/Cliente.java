@@ -1,13 +1,13 @@
 public class Cliente {
     private String nome;
     private String cpf;
-    private String fone;
+    private String telefone;
     private String endereco;
 
-    public Cliente(String nome, String cpf, String fone, String endereco) {
+    public Cliente(String nome, String cpf, String telefone, String endereco) {
         this.nome = nome;
         this.cpf = cpf;
-        this.fone = fone;
+        this.telefone = telefone;
         this.endereco = endereco;
     }
 
@@ -19,11 +19,16 @@ public class Cliente {
         return cpf;
     }
 
-    public String getFone() {
-        return fone;
+    public String getTelefone() {
+        return telefone;
     }
 
     public String getEndereco() {
         return endereco;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + cpf + " - " + telefone + " - " + endereco;
     }
 }

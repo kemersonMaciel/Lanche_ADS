@@ -1,103 +1,76 @@
-import java.awt.Color;
-import java.awt.Font;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 
-public class Tela_Pagamento extends JFrame implements ActionListener {
-
+public class Tela_Pagamento extends JFrame {
     private Pedido pedidoAtual;
-    private JButton btfinalizar;
-    private JRadioButton rbDinheiro, rbPix, rbCartaoCredito, rbCartaoDebito;
 
     public Tela_Pagamento(Pedido pedido) {
         this.pedidoAtual = pedido;
-    }
 
-    Tela_Pagamento() {
+        // Configuração da janela de pagamento
         setTitle("Realizar Pagamento");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
-        JPanel painel = new JPanel();
+        // Painel principal com layout null para uso do setBounds
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
 
-        JLabel lbtitle = new JLabel("Escolha forma de pagamento:");
+        // Label para o método de pagamento
+        JLabel lblMetodoPagamento = new JLabel("Método de Pagamento:");
+        lblMetodoPagamento.setBounds(20, 20, 150, 25);
+        panel.add(lblMetodoPagamento);
 
+        // Grupo de botões de rádio para métodos de pagamento
         ButtonGroup grupoPagamento = new ButtonGroup();
-
-        rbDinheiro = new JRadioButton("Dinheiro");
-        rbPix = new JRadioButton("Pix");
-        rbCartaoCredito = new JRadioButton("Cartão de Crédito");
-        rbCartaoDebito = new JRadioButton("Cartão de Débito");
+        JRadioButton rbPix = new JRadioButton("Pix");
+        rbPix.setBounds(20, 50, 150, 25);
+        JRadioButton rbDinheiro = new JRadioButton("Dinheiro");
+        rbDinheiro.setBounds(20, 80, 150, 25);
+        JRadioButton rbCartaoCredito = new JRadioButton("Cartão de Crédito");
+        rbCartaoCredito.setBounds(20, 110, 150, 25);
+        JRadioButton rbCartaoDebito = new JRadioButton("Cartão de Débito");
+        rbCartaoDebito.setBounds(20, 140, 150, 25);
         grupoPagamento.add(rbPix);
         grupoPagamento.add(rbDinheiro);
         grupoPagamento.add(rbCartaoCredito);
         grupoPagamento.add(rbCartaoDebito);
+        panel.add(rbPix);
+        panel.add(rbDinheiro);
+        panel.add(rbCartaoCredito);
+        panel.add(rbCartaoDebito);
 
-        btfinalizar = new JButton("Finalizar Pedido");
-        btfinalizar.addActionListener(this);
+        // Botão para finalizar o pedido
+        JButton btnFinalizar = new JButton("Finalizar");
+        btnFinalizar.setBounds(150, 180, 100, 30);
+        btnFinalizar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String metodoPagamento = "";
+                if (rbPix.isSelected()) {
+                    metodoPagamento = "Pix";
+                } else if (rbDinheiro.isSelected()) {
+                    metodoPagamento = "Dinheiro";
+                } else if (rbCartaoCredito.isSelected()) {
+                    metodoPagamento = "Cartão de Crédito";
+                } else if (rbCartaoDebito.isSelected()) {
+                    metodoPagamento = "Cartão de Débito";
+                }
+                if (metodoPagamento.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Selecione um método de pagamento!");
+                    return;
+                }
+                pedidoAtual.setMetodoPagamento(metodoPagamento);
+                Tela_RealizarPedido.getListaPedidos().add(pedidoAtual);
+                JOptionPane.showMessageDialog(null, "Pedido finalizado com sucesso!");
+                dispose();
+            }
+        });
+        panel.add(btnFinalizar);
 
-        lbtitle.setBounds(45, 15, 200, 30);
-
-        rbPix.setBounds(30, 60, 150, 30);
-        rbDinheiro.setBounds(30, 90, 80, 30);
-        rbCartaoCredito.setBounds(30, 120, 200, 30);
-        rbCartaoDebito.setBounds(30, 150, 200, 30);
-
-        btfinalizar.setBackground(Color.BLACK);
-        btfinalizar.setForeground(Color.WHITE);
-        btfinalizar.setBounds(70, 210, 150, 30);
-
-        painel.add(lbtitle);
-        painel.add(rbPix);
-        painel.add(rbDinheiro);
-        painel.add(rbCartaoCredito);
-        painel.add(rbCartaoDebito);
-        painel.add(btfinalizar);
-
-        lbtitle.setFont(new Font("Serif", Font.BOLD, 16));
-        rbPix.setFont(new Font("Monospaced", Font.BOLD, 14));
-        rbDinheiro.setFont(new Font("Monospaced", Font.BOLD, 14));
-        rbCartaoCredito.setFont(new Font("Monospaced", Font.BOLD, 14));
-        rbCartaoDebito.setFont(new Font("Monospaced", Font.BOLD, 14));
-        btfinalizar.setFont(new Font("Dialog", Font.CENTER_BASELINE, 15));
-
-        add(painel);
+        // Adicionando o painel à janela
+        add(panel);
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        // Suponho que você já tenha uma instância de Pedido
-        Pedido pedido = new Pedido();
-        Tela_Pagamento formapag = new Tela_Pagamento(pedido);
-        formapag.setVisible(true);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btfinalizar) {
-            String pagamento = "";
-            if (rbPix.isSelected()) {
-                pagamento = "Pix";
-            } else if (rbDinheiro.isSelected()) {
-                pagamento = "Dinheiro";
-            } else if (rbCartaoCredito.isSelected()) {
-                pagamento = "Cartão de Crédito";
-            } else if (rbCartaoDebito.isSelected()) {
-                pagamento = "Cartão de Débito";
-            }
-            if (!pagamento.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Forma de pagamento selecionada: " + pagamento);
-            } else {
-                JOptionPane.showMessageDialog(null, "Por favor, selecione uma forma de pagamento.", "Erro",
-                        JOptionPane.ERROR_MESSAGE);
-            }
-        }
     }
 }

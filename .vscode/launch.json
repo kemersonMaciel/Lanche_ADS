@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Tela_BuscarProduto",
+            "request": "launch",
+            "mainClass": "Tela_BuscarProduto",
+            "projectName": "Lanche_ADS_bb130d76"
+        },
+        {
+            "type": "java",
             "name": "Tela_CadastroProduto",
             "request": "launch",
             "mainClass": "Tela_CadastroProduto",

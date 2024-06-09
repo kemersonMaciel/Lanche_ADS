@@ -1,6 +1,5 @@
 import java.awt.Font;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
@@ -11,54 +10,74 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class Tela_Home extends JFrame implements ActionListener {
-    
-    JMenuItem cadastrarProduto;
-    JMenuItem novoPedidoItem;
-    JMenuItem historicoMenuItem;
 
+public class Tela_Home extends JFrame {
     public Tela_Home() {
-        setTitle("Kome - Kome Lanche"); // Título da página
-        setSize(500, 500);
-        setLocation(500, 150);
+        //Janela principal
+        setTitle("Lanche ADS");
+        setSize(500, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
-        JPanel painel = new JPanel(new GridBagLayout()); // centralizar a imagem
+        JPanel painel = new JPanel();
 
-        JMenuBar menuBar = new JMenuBar(); // Barra de menu.
+        // Barra de menu
+        JMenuBar menuBar = new JMenuBar();
 
-        // Barra de menu de Cadastro.
-        JMenu cadastrarMenu = new JMenu("Cadastro"); 
-        cadastrarProduto = new JMenuItem("Cadastrar Produto");
-        cadastrarProduto.addActionListener(this);
-        cadastrarMenu.add(cadastrarProduto); // incluir cadastrar produto na barra de menu.
+        // Menu de Cadastro
+        JMenu menuCadastro = new JMenu("Cadastro");
+        JMenuItem menuItemCadastroProduto = new JMenuItem("Cadastro de Produto");
+        menuItemCadastroProduto.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Tela_CadastroProduto();
+            }
+        });
+        menuCadastro.add(menuItemCadastroProduto);
 
-        // Barra menu de Pedido.
-        JMenu pedidoMenu = new JMenu("Pedido");
-        novoPedidoItem = new JMenuItem("Novo Pedido");
-        novoPedidoItem.addActionListener(this);
-        historicoMenuItem = new JMenuItem("Histórico de Pedido");
-        historicoMenuItem.addActionListener(this);
-        pedidoMenu.add(novoPedidoItem);
-        pedidoMenu.add(historicoMenuItem);
+        // Menu de Pedido
+        JMenu menuPedido = new JMenu("Pedido");
+        JMenuItem menuItemRealizarPedido = new JMenuItem("Realizar Pedido");
+        menuItemRealizarPedido.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Tela_RealizarPedido();
+            }
+        });
+        JMenuItem menuItemHistoricoPedido = new JMenuItem("Histórico de Pedido");
+        menuItemHistoricoPedido.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Tela_HistoricoPedido();
+            }
+        });
+        menuPedido.add(menuItemRealizarPedido);
+        menuPedido.add(menuItemHistoricoPedido);
 
-        // Barra do menu Buscar
-        JMenu buscarMenu = new JMenu("Buscar");
+        // Menu de Buscar Produto
+        JMenu menuBuscarProduto = new JMenu("Buscar Produto");
+        JMenuItem menuItemBuscarProduto = new JMenuItem("Buscar Produto");
+        menuItemBuscarProduto.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Tela_BuscarProduto();
+            }
+        });
+        menuBuscarProduto.add(menuItemBuscarProduto);
 
-        // adicionando os menus na Barra.
-        menuBar.add(cadastrarMenu);
-        menuBar.add(pedidoMenu);
-        menuBar.add(buscarMenu);
+        // Adicionando menus Ã  barra de menu
+        menuBar.add(menuCadastro);
+        menuBar.add(menuPedido);
+        menuBar.add(menuBuscarProduto);
 
-        // definindo barra de menu na janela principal
+        // Definindo a barra de menu na janela principal
         setJMenuBar(menuBar);
 
-        // inserindo imagem
+        // Tornando a janela visÃ­vel
+        setVisible(true);
+
+         // inserindo imagem
         String imagePath = "src/source/Lanche.png";
         ImageIcon icon = new ImageIcon(imagePath);
         JLabel imgLabel = new JLabel(icon);
 
-        // centralizar a imagem 
+         // centralizar a imagem 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -68,33 +87,15 @@ public class Tela_Home extends JFrame implements ActionListener {
         add(painel);
 
         // Configura as fontes dos menus e itens de menu
-        cadastrarMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        cadastrarProduto.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        pedidoMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        novoPedidoItem.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        historicoMenuItem.setFont(new Font("Segoe UI", Font.BOLD, 14));
-        buscarMenu.setFont(new Font("Segoe UI", Font.BOLD, 14));
-
-        // tornando a tela visível
-        setVisible(true);
+        menuCadastro.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        menuItemCadastroProduto.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        menuPedido.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        menuItemRealizarPedido.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        menuItemHistoricoPedido.setFont(new Font("Segoe UI", Font.BOLD, 14));
+        menuBuscarProduto.setFont(new Font("Segoe UI", Font.BOLD, 14));
     }
 
     public static void main(String[] args) {
         new Tela_Home();
-    }
-    
-    // lincando as telas
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == cadastrarProduto) {
-            Tela_CadastroProduto telacadas = new Tela_CadastroProduto();
-            telacadas.setVisible(true);
-        } else if (e.getSource() == novoPedidoItem) {
-            Tela_RealizarPedido novopedido = new Tela_RealizarPedido();
-            novopedido.setVisible(true);
-        } else if (e.getSource() == historicoMenuItem) {
-            Tela_Historicoped historicoped = new Tela_Historicoped();
-            historicoped.setVisible(true);
-        }
     }
 }

@@ -1,4 +1,3 @@
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -6,11 +5,11 @@ public class Pedido {
     private Cliente cliente;
     private ArrayList<ItemPedido> itens;
     private String metodoPagamento;
-    private LocalDate datapedido;
+    private LocalDate dataPedido; // Adicionando a data do pedido
 
     public Pedido(Cliente cliente, LocalDate dataPedido) {
         this.cliente = cliente;
-        this.datapedido = dataPedido;
+        this.dataPedido = dataPedido;
         this.itens = new ArrayList<>();
     }
 
@@ -42,16 +41,15 @@ public class Pedido {
         return metodoPagamento;
     }
 
-    public void setMetodoPagamento(String metodopagamento) {
-        this.metodoPagamento = metodopagamento;
+    public void setMetodoPagamento(String metodoPagamento) {
+        this.metodoPagamento = metodoPagamento;
     }
 
     public LocalDate getDataPedido() {
-        return datapedido;
+        return dataPedido;
     }
 
     public void setDataPedido(LocalDate dataPedido) {
-        this.datapedido = dataPedido;
+        this.dataPedido = dataPedido;
     }
-
 }

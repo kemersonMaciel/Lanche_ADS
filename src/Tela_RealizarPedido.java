@@ -1,174 +1,139 @@
-import java.awt.Color;
+import javax.swing.*;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSpinner;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
-
-public class Tela_RealizarPedido extends JFrame implements ActionListener{
+public class Tela_RealizarPedido extends JFrame {
     private JTextField txtNomeCliente;
     private JComboBox<String> comboProdutos;
     private JSpinner spinnerQuantidade;
     private JTextArea textAreaPedido;
     private static ArrayList<Pedido> listaPedidos = new ArrayList<>();
     private Pedido pedidoAtual;
-    private JButton btCadastrarCliente;
-    private JButton btContinuar;
 
-
-    public Tela_RealizarPedido(){
-        
+    public Tela_RealizarPedido() {
+        // ConfiguraÃ§Ã£o da janela de realizar pedido
         setTitle("Realizar Pedido");
-        setSize(400,490);
-        setLocation(600, 150);
+        setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
+        // Configurando o painel principal com layout de grid
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
 
-    JPanel painel = new JPanel();
+        // Campo de texto para o nome do cliente
+        JLabel lblNomeCliente = new JLabel("Nome do Cliente:");
+        lblNomeCliente.setBounds(20, 20, 120, 30);
+        panel.add(lblNomeCliente);
 
-    JLabel lbtitulo = new JLabel("Faça seu pedido");
+        txtNomeCliente = new JTextField();
+        txtNomeCliente.setBounds(150, 20, 150, 30);
+        panel.add(txtNomeCliente);
 
-    // Cliente + Botão cadastrar novo cliente
-    JLabel lbcliente = new JLabel("Cliente:");
-    txtNomeCliente = new JTextField();
-    JButton btCadastrarCliente = new JButton("Cadastrar Cliente");
-    btCadastrarCliente.addActionListener(new ActionListener() {
-        public void actionPerformed (ActionEvent e){
-            new Tela_CadastroCliente();
+        // Botão para cadastrar novo cliente
+        JButton btnCadastrarCliente = new JButton("Cadastrar Cliente");
+        btnCadastrarCliente.setBounds(320, 20, 145, 30);
+        btnCadastrarCliente.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Tela_CadastroCliente();
+            }
+        });
+        panel.add(btnCadastrarCliente);
+
+        // ComboBox para selecionar os produtos cadastrados
+        JLabel lblProduto = new JLabel("Produto:");
+        lblProduto.setBounds(20, 60, 120, 30);
+        panel.add(lblProduto);
+
+        comboProdutos = new JComboBox<>();
+        for (Produto produto : Tela_CadastroProduto.getListaProdutos()) {
+            comboProdutos.addItem(produto.toString());
         }
-    });
-    
-    //comboBox pra seleção de produtos cadastrados
-    JLabel lbselecpedido = new JLabel("Selecione seu pedido:");
-    JComboBox<String> cbopcao = new JComboBox<>();
-    for (Produto produto : Tela_CadastroProduto.getListaProdutos()){
-        cbopcao.addItem(produto.toString());
-    }
+        comboProdutos.setBounds(150, 60, 150, 30);
+        panel.add(comboProdutos);
 
-    //Spinner para selecionar a quantidade de produtos
-    JLabel lbquantidade = new JLabel("Quantidade");
-    JSpinner spquantidade = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
+        // Spinner para selecionar a quantidade de produtos
+        JLabel lblQuantidade = new JLabel("Quantidade:");
+        lblQuantidade.setBounds(20, 100, 120, 30);
+        panel.add(lblQuantidade);
 
-    //Área para exibir dados do pedido
-    JLabel lbdados = new JLabel("Dados do Pedido:");
-    JTextArea textAreaPedido = new JTextArea(); //
-    textAreaPedido.setEditable(false); // não pode ser editado
-    JScrollPane scrollPane = new JScrollPane(textAreaPedido); //barra de rolagem
+        spinnerQuantidade = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
+        spinnerQuantidade.setBounds(150, 100, 150, 30);
+        panel.add(spinnerQuantidade);
 
-    //inciar pedido sem cliente
-    pedidoAtual = new Pedido (null, null);
-    
-    
-    JButton btAdicionar = new JButton("Adicionar");
-    btAdicionar.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            String produtoStr = (String) comboProdutos.getSelectedItem();
-            Produto produto = null;
-            for (Produto p : Tela_CadastroProduto.getListaProdutos()) {
-                if (p.toString().equals(produtoStr)) {
-                    produto = p;
-                    break;
+        // Área de texto para exibir os dados do pedido
+        JLabel lblDadosPedido = new JLabel("Dados do Pedido:");
+        lblDadosPedido.setBounds(20, 140, 120, 30);
+        panel.add(lblDadosPedido);
+
+        textAreaPedido = new JTextArea();
+        textAreaPedido.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textAreaPedido);
+        scrollPane.setBounds(150, 140, 290, 90);
+        panel.add(scrollPane);
+
+        // Inicializando pedido atual sem cliente associado
+        pedidoAtual = new Pedido(null, null);
+
+        // BotÃ£o para adicionar produto ao pedido
+        JButton btnAdicionar = new JButton("Adicionar");
+        btnAdicionar.setBounds(150,250,100,30);
+        btnAdicionar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String produtoStr = (String) comboProdutos.getSelectedItem();
+                Produto produto = null;
+                for (Produto p : Tela_CadastroProduto.getListaProdutos()) {
+                    if (p.toString().equals(produtoStr)) {
+                        produto = p;
+                        break;
+                    }
                 }
+                int quantidade = (int) spinnerQuantidade.getValue();
+                ItemPedido item = new ItemPedido(produto, quantidade);
+                pedidoAtual.adicionarItem(item);
+                textAreaPedido.append(item.getQuantidade() + "x " + item.getProduto().getNome() + " - R$ " + item.getProduto().getValor() + "\n");
             }
-            int quantidade = (int) spinnerQuantidade.getValue();
-            ItemPedido item = new ItemPedido(produto, quantidade);
-            pedidoAtual.adicionarItem(item);
-        textAreaPedido.append(item.getQuantidade() + "x" + item.getProduto().getNome() + " - R$" + item.getProduto().getValor() + "\n");
-        }
-    });
-    JButton btContinuar = new JButton("Continuar");
-    btContinuar.addActionListener(new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            String nomeCliente = txtNomeCliente.getText();
-            if (nomeCliente.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Informe o nome do cliente!");
-                return;
+        });
+        panel.add(btnAdicionar);
+
+        // BotÃ£o para continuar para a tela de pagamento
+        JButton btnContinuar = new JButton("Continuar");
+        btnContinuar.setBounds(270, 250, 100, 30);
+        btnContinuar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String nomeCliente = txtNomeCliente.getText();
+                if (nomeCliente.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Informe o nome do cliente!");
+                    return;
+                }
+                // Simulando a recuperaÃ§Ã£o do cliente (idealmente deve ser buscado ou cadastrado)
+                Cliente cliente = new Cliente(nomeCliente, "", "", "");
+                pedidoAtual.setCliente(cliente);
+                new Tela_Pagamento(pedidoAtual);
+                dispose();
             }
+        });
+        panel.add(btnContinuar);
 
-            Cliente cliente = new Cliente(nomeCliente," "," "," ");
-            pedidoAtual.setCliente(cliente);
-            new Tela_Pagamento(pedidoAtual);
-        }
-    });
-
-        lbtitulo.setBounds(130, 15, 150, 30);
-        lbcliente.setBounds(30,50,80,30);
-        lbselecpedido.setBounds(30,140,200,30);
-        cbopcao.setBounds(30,170,150,30);
-        lbquantidade.setBounds(30,210,100,30);
-        lbdados.setBounds(30,300,150,30);
-
-        btCadastrarCliente.setBackground(Color.BLACK);
-        btCadastrarCliente.setForeground(Color.WHITE);
-        btCadastrarCliente.setBounds(215,80,150,30);
-
-        btContinuar.setBackground(Color.BLACK);
-        btContinuar.setForeground(Color.WHITE);
-        btContinuar.setBounds(140, 400, 120, 30);
-        
-        btAdicionar.setBackground(Color.BLACK);
-        btAdicionar.setForeground(Color.WHITE);
-        btAdicionar.setBounds(215, 170, 150, 30);
-
-        spquantidade.setBounds(30,240,100,30);
-
-        painel.add(lbtitulo);
-        painel.add(lbcliente);
-        painel.add(lbselecpedido);
-        painel.add(lbquantidade);
-        painel.add(cbopcao);
-        painel.add(lbdados);
-        painel.add(btContinuar);
-        painel.add(btAdicionar);
-        painel.add(btCadastrarCliente);
-        painel.add(spquantidade);
-
-        lbtitulo.setFont(new Font("Serif", Font.BOLD, 18));
-        lbcliente.setFont(new Font("Sans",Font.BOLD,15));
-        lbselecpedido.setFont(new Font("Sans",Font.BOLD,15));
-        lbquantidade.setFont(new Font("Sans",Font.BOLD,15));
-        lbdados.setFont(new Font("Sans",Font.BOLD,15));
-        cbopcao.setFont(new Font("Monospaced",Font.BOLD,12));
-        spquantidade.setFont(new Font("Monospaced",Font.BOLD,18));
-        btCadastrarCliente.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
-        btAdicionar.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
-        btContinuar.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
-
-        add(painel);
+        // Adicionando o painel Ã  janela
+        add(panel);
         setVisible(true);
-    }
-    public static void main(String[] args) {
-        // Suponho que você já tenha uma instância de Pedido
-        Pedido pedido = new Pedido();
-        Tela_Pagamento formapag = new Tela_Pagamento(pedido);
-        formapag.setVisible(true);
+
+        lblNomeCliente.setFont(new Font("Sans",Font.BOLD,14));
+        lblProduto.setFont(new Font("Sans",Font.BOLD,14));
+        lblQuantidade.setFont(new Font("Sans",Font.BOLD,14));
+        lblDadosPedido.setFont(new Font("Sans",Font.BOLD,13));
+        comboProdutos.setFont(new Font("Monospaced",Font.BOLD,12));
+        spinnerQuantidade.setFont(new Font("Monospaced",Font.BOLD,18));
+        btnCadastrarCliente.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
+        btnAdicionar.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
+        btnContinuar.setFont(new Font("Dialog", Font.CENTER_BASELINE,13));
     }
 
-    public static ArrayList<Pedido> getListaPedidos(){
+    public static ArrayList<Pedido> getListaPedidos() {
         return listaPedidos;
-    }    
-
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == btCadastrarCliente){
-            Tela_CadastroCliente cliente = new Tela_CadastroCliente();
-            cliente.setVisible(true);
-        } else if (e.getSource() == btContinuar){
-            Tela_Pagamento formapag = new Tela_Pagamento();
-            formapag.setVisible(true);
-        }
     }
 }
