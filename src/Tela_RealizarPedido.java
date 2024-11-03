@@ -14,17 +14,15 @@ public class Tela_RealizarPedido extends JFrame {
     private Pedido pedidoAtual;
 
     public Tela_RealizarPedido() {
-        // ConfiguraÃ§Ã£o da janela de realizar pedido
+
         setTitle("Realizar Pedido");
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Configurando o painel principal com layout de grid
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        // Campo de texto para o nome do cliente
         JLabel lblNomeCliente = new JLabel("Nome do Cliente:");
         lblNomeCliente.setBounds(20, 20, 120, 30);
         panel.add(lblNomeCliente);
@@ -33,7 +31,6 @@ public class Tela_RealizarPedido extends JFrame {
         txtNomeCliente.setBounds(150, 20, 150, 30);
         panel.add(txtNomeCliente);
 
-        // Botão para cadastrar novo cliente
         JButton btnCadastrarCliente = new JButton("Cadastrar Cliente");
         btnCadastrarCliente.setBounds(320, 20, 145, 30);
         btnCadastrarCliente.addActionListener(new ActionListener() {
@@ -43,7 +40,6 @@ public class Tela_RealizarPedido extends JFrame {
         });
         panel.add(btnCadastrarCliente);
 
-        // ComboBox para selecionar os produtos cadastrados
         JLabel lblProduto = new JLabel("Produto:");
         lblProduto.setBounds(20, 60, 120, 30);
         panel.add(lblProduto);
@@ -55,7 +51,7 @@ public class Tela_RealizarPedido extends JFrame {
         comboProdutos.setBounds(150, 60, 150, 30);
         panel.add(comboProdutos);
 
-        // Spinner para selecionar a quantidade de produtos
+
         JLabel lblQuantidade = new JLabel("Quantidade:");
         lblQuantidade.setBounds(20, 100, 120, 30);
         panel.add(lblQuantidade);
@@ -64,7 +60,6 @@ public class Tela_RealizarPedido extends JFrame {
         spinnerQuantidade.setBounds(150, 100, 150, 30);
         panel.add(spinnerQuantidade);
 
-        // Área de texto para exibir os dados do pedido
         JLabel lblDadosPedido = new JLabel("Dados do Pedido:");
         lblDadosPedido.setBounds(20, 140, 120, 30);
         panel.add(lblDadosPedido);
@@ -75,10 +70,8 @@ public class Tela_RealizarPedido extends JFrame {
         scrollPane.setBounds(150, 140, 290, 90);
         panel.add(scrollPane);
 
-        // Inicializando pedido atual sem cliente associado
         pedidoAtual = new Pedido(null, null);
 
-        // BotÃ£o para adicionar produto ao pedido
         JButton btnAdicionar = new JButton("Adicionar");
         btnAdicionar.setBounds(150,250,100,30);
         btnAdicionar.addActionListener(new ActionListener() {
@@ -99,7 +92,6 @@ public class Tela_RealizarPedido extends JFrame {
         });
         panel.add(btnAdicionar);
 
-        // BotÃ£o para continuar para a tela de pagamento
         JButton btnContinuar = new JButton("Continuar");
         btnContinuar.setBounds(270, 250, 100, 30);
         btnContinuar.addActionListener(new ActionListener() {
@@ -109,7 +101,7 @@ public class Tela_RealizarPedido extends JFrame {
                     JOptionPane.showMessageDialog(null, "Informe o nome do cliente!");
                     return;
                 }
-                // Simulando a recuperaÃ§Ã£o do cliente (idealmente deve ser buscado ou cadastrado)
+
                 Cliente cliente = new Cliente(nomeCliente, "", "", "");
                 pedidoAtual.setCliente(cliente);
                 new Tela_Pagamento(pedidoAtual);
@@ -118,7 +110,6 @@ public class Tela_RealizarPedido extends JFrame {
         });
         panel.add(btnContinuar);
 
-        // Adicionando o painel Ã  janela
         add(panel);
         setVisible(true);
 

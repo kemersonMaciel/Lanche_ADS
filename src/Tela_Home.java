@@ -61,23 +61,18 @@ public class Tela_Home extends JFrame {
         });
         menuBuscarProduto.add(menuItemBuscarProduto);
 
-        // Adicionando menus Ã  barra de menu
         menuBar.add(menuCadastro);
         menuBar.add(menuPedido);
         menuBar.add(menuBuscarProduto);
 
-        // Definindo a barra de menu na janela principal
         setJMenuBar(menuBar);
 
-        // Tornando a janela visÃ­vel
         setVisible(true);
 
-         // inserindo imagem
         String imagePath = "src/source/Lanche.png";
         ImageIcon icon = new ImageIcon(imagePath);
         JLabel imgLabel = new JLabel(icon);
 
-         // centralizar a imagem 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
@@ -86,7 +81,6 @@ public class Tela_Home extends JFrame {
 
         add(painel);
 
-        // Configura as fontes dos menus e itens de menu
         menuCadastro.setFont(new Font("Segoe UI", Font.BOLD, 14));
         menuItemCadastroProduto.setFont(new Font("Segoe UI", Font.BOLD, 14));
         menuPedido.setFont(new Font("Segoe UI", Font.BOLD, 14));

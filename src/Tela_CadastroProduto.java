@@ -12,17 +12,14 @@ public class Tela_CadastroProduto extends JFrame {
     private static ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     public Tela_CadastroProduto() {
-        // ConfiguraÃ§Ã£o da janela de cadastro de produto
         setTitle("Cadastro de Produto");
         setSize(300, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Painel principal com layout de grid
         JPanel panel = new JPanel();
-        panel.setLayout(null); // Usar layout absoluto
+        panel.setLayout(null); 
 
-        // Campo de texto para o nome do produto
         JLabel lblProduto = new JLabel("Produto:");
         lblProduto.setBounds(30, 29, 150, 30);
         panel.add(lblProduto);
@@ -31,7 +28,6 @@ public class Tela_CadastroProduto extends JFrame {
         txtProduto.setBounds(120, 30, 150, 30);
         panel.add(txtProduto);
 
-        // Campo de texto para o valor do produto
         JLabel lblValor = new JLabel("Valor:");
         lblValor.setBounds(30, 89, 100, 30);
         panel.add(lblValor);
@@ -40,7 +36,6 @@ public class Tela_CadastroProduto extends JFrame {
         txtValor.setBounds(120, 90, 150, 30);
         panel.add(txtValor);
 
-        // Checkbox para definir se o produto está ativo
         JLabel lblAtivo = new JLabel("Ativo:");
         lblAtivo.setBounds(30, 135, 100, 30);
         panel.add(lblAtivo);
@@ -49,12 +44,11 @@ public class Tela_CadastroProduto extends JFrame {
         chkAtivo.setBounds(120, 135, 200, 30);
         panel.add(chkAtivo);
 
-        // BotÃ£o para salvar o produto
         JButton btnSalvar = new JButton("Salvar");
         btnSalvar.setBounds(100, 200, 100, 30);
         btnSalvar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // LÃ³gica para salvar produto
+
                 String nome = txtProduto.getText();
                 double valor = Double.parseDouble(txtValor.getText());
                 boolean ativo = chkAtivo.isSelected();
@@ -73,11 +67,8 @@ public class Tela_CadastroProduto extends JFrame {
         txtProduto.setFont(new Font("Monospaced", Font.PLAIN, 15));
         txtValor.setFont(new Font("Monospaced", Font.PLAIN, 15));
 
-
-        // Adicionando o botÃ£o de salvar ao painel
         panel.add(btnSalvar);
 
-        // Adicionando o painel Ã  janela
         add(panel);
         setVisible(true);
     }

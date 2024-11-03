@@ -8,22 +8,18 @@ public class Tela_Pagamento extends JFrame {
     public Tela_Pagamento(Pedido pedido) {
         this.pedidoAtual = pedido;
 
-        // Configuração da janela de pagamento
         setTitle("Realizar Pagamento");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // Painel principal com layout null para uso do setBounds
         JPanel panel = new JPanel();
         panel.setLayout(null);
 
-        // Label para o método de pagamento
         JLabel lblMetodoPagamento = new JLabel("Método de Pagamento:");
         lblMetodoPagamento.setBounds(20, 20, 150, 25);
         panel.add(lblMetodoPagamento);
 
-        // Grupo de botões de rádio para métodos de pagamento
         ButtonGroup grupoPagamento = new ButtonGroup();
         JRadioButton rbPix = new JRadioButton("Pix");
         rbPix.setBounds(20, 50, 150, 25);
@@ -42,7 +38,6 @@ public class Tela_Pagamento extends JFrame {
         panel.add(rbCartaoCredito);
         panel.add(rbCartaoDebito);
 
-        // Botão para finalizar o pedido
         JButton btnFinalizar = new JButton("Finalizar");
         btnFinalizar.setBounds(150, 180, 100, 30);
         btnFinalizar.addActionListener(new ActionListener() {
@@ -69,7 +64,6 @@ public class Tela_Pagamento extends JFrame {
         });
         panel.add(btnFinalizar);
 
-        // Adicionando o painel à janela
         add(panel);
         setVisible(true);
     }
